@@ -12,11 +12,20 @@ function projectData(data){
   .data(data)
   .enter()
   .append("circle")
-  .attr("r", 5);
+  .attr("r", 5)
+  .on("mousedown", function() {
+    // div.text("div.mousedown");
+    $('#widget').hide();
+    $('#widget').text('DATA WILL GO HERE');
+    $('#widget').fadeIn(2000);
+    // $('body').append('BOOM it was bad I swear')
+
+  });
+;
 
   svg.selectAll("circle")
   .data(data)
-  .transition(5000)
+  .transition(1000)
   .attr("r", 5)
   .attr("transform", function(d) {return "translate(" + projection([d.lat,d.long]) + ")";})
   .transition()
@@ -97,5 +106,8 @@ $(document).ready(function(){
     projectData(data);
 
   }, 5000);
+
+
+
 
 });
